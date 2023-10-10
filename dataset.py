@@ -15,9 +15,6 @@ class Dataset:
             path: str = os.path.join(self.origin, directory)
             with zf.ZipFile(path, 'r') as zip:
                 zip.extractall(self.destination)
-
-
-    def 
             
 
 
