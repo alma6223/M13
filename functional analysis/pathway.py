@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from typing import List, Dict
 import requests
+import json
 
 
 url: str = 'https://www.genome.jp/kegg/pathway.html'
@@ -32,10 +33,14 @@ for code in soup.find_all(attrs={'class': 'list'}):
     codes.append(code.text)
 
 
-data = [] 
+data = {}
 
 for group in groups:
-    data.extend([group, subgroups[index], codes[index]] for index in range(len(subgroups)) if subgroups[index].startswith(group.split()[0]))
+    data[group[0]] = {}
+    for index in range(len(subgroups)):
+        if subgroups[index][0] == group[0]:
+            data[group[0]][subgroups[index].split()[0]] = [code[:5] for code in codes[index].split('\n') if code != '']
+            
 
-for i in data:
-    print(i)
+with open('pathway.json', 'w') as f:
+    json.dump(data, f, indent=4)
