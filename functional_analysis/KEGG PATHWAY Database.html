@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KEGG PATHWAY Database</title>
+<link rel="stylesheet" href="/css/kegg25.css">
+<style>
+#dbnav ul {
+  margin: 0 0 0 10px;
+}
+#dbnav ul li {
+  padding: 6px 0 6px 13px;
+}
+div.list dt {
+  width: 70px;
+}
+div.list dd {
+  width: 500px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="topnav" ontouchstart="">
+  <div class="navlist">
+    <a href="/kegg/">KEGG</a>
+  </div>
+  <div class="dropdown">
+    Databases
+    <div class="dropdown-content">
+      <ul>
+        <li><a href="/kegg/pathway.html">Pathway</a></li>
+        <li><a href="/kegg/brite.html">Brite</a></li>
+        <li><a href="/kegg/ko.html">KO</a></li>
+        <li><a href="/kegg/genes.html">Genes</a></li>
+        <li><a href="/kegg/compound/">Chemical</a></li>
+        <li><a href="/kegg/disease/">Disease</a></li>
+        <li><a href="/kegg/drug/">Drug</a></li>
+        <li><a href="/kegg/medicus.html">Medicus</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="dropdown">
+    Tools
+    <div class="dropdown-content">
+      <ul>
+        <li><a href="/kegg/mapper/">Mapper</a></li>
+        <li><a href="/kegg/genome/taxonomy.html">Taxonomy</a></li>
+        <li><a href="/kegg/genome/synteny.html">Synteny</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="dropdown">
+    Auto annotation
+    <div class="dropdown-content">
+      <ul>
+        <li><a href="https://www.kegg.jp/blastkoala/">BlastKOALA</a></li>
+        <li><a href="https://www.kegg.jp/ghostkoala/">GhostKOALA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="navlist">
+    <a href="https://www.kanehisa.jp/">Kanehisa Lab</a>
+  </div>
+</div>
+
+<div id="header">
+  <div class="logo">
+    <a href="/kegg/"><img src="/Fig/kegg128.gif" alt="KEGG icon"></a>
+  </div>
+  <div class="title">
+    <h2 class="txt3">KEGG PATHWAY Database</h2>
+    <h5>Wiring diagrams of molecular interactions, reactions and relations</h5>
+  </div>
+</div>
+
+<div id="dbnav" class="bar3">
+  <ul>
+    <li><a href="/kegg/kegg2.html">KEGG2</a></li>
+    <li><span class="current">PATHWAY</span></li>
+    <li><a href="/kegg/brite.html">BRITE</a></li>
+    <li><a href="/kegg/module.html">MODULE</a></li>
+    <li><a href="/kegg/ko.html">KO</a></li>
+    <li><a href="/kegg/genes.html">GENES</a></li>
+    <li><a href="/kegg/compound/">COMPOUND</a></li>
+    <li><a href="/kegg/network.html">NETWORK</a></li>
+    <li><a href="/kegg/disease/">DISEASE</a></li>
+    <li><a href="/kegg/drug/">DRUG</a></li>
+  </ul>
+</div>
+
+<div id="content">
+
+<!-- start -->
+
+<div class="searchbox">
+<form name="mode" action="https://www.kegg.jp/kegg-bin/search_pathway_text">
+  <div style="width:150px; float:left;">
+    <span class="small">Select prefix</span>
+    <br>
+    <input type="text" name="map" size="4" value="map">
+    <input type="button" value="Organism" onclick="window.open('/kegg-bin/find_org_www?mode=abbr&amp;obj=mode.map','_blank','toolbar=no,location=no,directories=no,width=500,height=200,resizable=yes');">
+  </div>
+  <div style="float:left;">
+    <span class="small">Enter keywords</span>
+    <br>
+    <input type="search" name="keyword" size="40">
+    <input type="hidden" name="mode" value="1">
+    <input type="hidden" name="viewImage" value="true">
+    <input type="submit" value="Go">
+    &nbsp;&nbsp; <a href="javascript:void(window.open('/kegg/document/help_pathway_search.html','KEGG_Help','toolbar=no,location=no,directories=no,width=720,height=640,resizable=yes,scrollbars=yes'))">Help</a>
+  </div>
+  <div style="clear:both;"></div>
+</form>
+</div>
+
+<div class="main">
+
+<hr class="frame3">
+
+<div style="float:left;">
+<h4 class="txt3">Pathway Maps</h4>
+</div>
+<div style="float:right;">
+[ <a href="/kegg/docs/upd_kegg.html">New pathway maps</a> | <a href="/kegg/docs/upd_map.html">Update history</a> ]
+</div>
+<div style="clear:both;"></div>
+
+<div class="indent">
+<b>KEGG PATHWAY</b> is a collection of manually drawn <a href="/kegg/kegg3a.html">pathway maps</a> representing our knowledge of the molecular interaction, reaction and relation networks for:
+  <div class="indent">
+    <p><a href="#metabolism"><b>1. Metabolism</b></a>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#global">Global/overview</a>
+        &nbsp;&nbsp;<a href="#carbohydrate">Carbohydrate</a>
+        &nbsp;&nbsp;<a href="#energy">Energy</a>
+        &nbsp;&nbsp;<a href="#lipid">Lipid</a>
+        &nbsp;&nbsp;<a href="#nucleotide">Nucleotide</a>
+        &nbsp;&nbsp;<a href="#amino">Amino acid</a>
+        &nbsp;&nbsp;<a href="#other">Other amino</a>
+        &nbsp;&nbsp;<a href="#glycan">Glycan</a>
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cofactor">Cofactor/vitamin</a>
+        &nbsp;&nbsp;<a href="#pk">Terpenoid/PK</a>
+        &nbsp;&nbsp;<a href="#secondary">Other secondary metabolite</a>
+        &nbsp;&nbsp;<a href="#xenobiotics">Xenobiotics</a>
+        &nbsp;&nbsp;<a href="#chemical">Chemical structure</a>
+    <br><a href="#genetic"><b>2. Genetic Information Processing</b></a>
+    <br><a href="#environmental"><b>3. Environmental Information Processing</b></a>
+    <br><a href="#cellular"><b>4. Cellular Processes</b></a>
+    <br><a href="#organismal"><b>5. Organismal Systems</b></a>
+    <br><a href="#disease"><b>6. Human Diseases</b></a>
+    <br><a href="#drug"><b>7. Drug Development</b></a></p>
+  </div>
+The pathway map viewer linked from this page contains features of <a href="/kegg/mapper/">KEGG mapping</a>, especially for coloring map objects as described <a href="/kegg/docs/color_gui.html">here</a>.
+</div>
+
+<h4 class="txt3">Pathway Identifiers</h4>
+
+<div class="list2">
+Each pathway map is identified by the combination of 2-4 letter prefix code and 5 digit number (see <a href="/kegg/kegg3.html">KEGG Identifier</a>). The prefix has the following meaning:
+<dl style="margin-left:20px;">
+  <dt>map</dt><dd>manually drawn reference pathway</dd>
+  <dt>ko</dt><dd>reference pathway highlighting KOs</dd>
+  <dt>ec</dt><dd>reference metabolic pathway highlighting EC numbers</dd>
+  <dt>rn</dt><dd>reference metabolic pathway highlighting reactions</dd>
+  <dt>&lt;org&gt;</dt><dd>organism-specific pathway generated by converting KOs to gene
+identifiers</dd>
+</dl>
+<div class="clear"></div>
+and the numbers starting with the following:
+<dl style="margin-left:20px;">
+  <dt>011</dt><dd>global map (lines linked to KOs)</dd>
+  <dt>012</dt><dd>overview map (lines linked to KOs)</dd>
+  <dt>010</dt><dd>chemical structure map (no KO expansion)</dd>
+  <dt>07</dt><dd>drug structure map (no KO expansion)</dd>
+  <dt>other</dt><dd>regular map (boxes linked to KOs)</dd>
+</dl>
+<div class="clear"></div>
+are used for different types of maps.
+<br><br>
+KEGG PATHWAY is integrated with <a href="/kegg/module.html">MODULE</a> and <a href="/kegg/network.html">NETWORK</a> databases as indicated below.
+<div class="indent">
+<span class="small">M</span> - module<br>
+<span class="small">R</span> - reaction module<br>
+<span class="small">N</span> - network
+</div>
+</div>
+
+<hr class="frame3">
+
+<h4 id="metabolism">1. Metabolism</h4>
+
+<b id="global">1.0 Global and overview maps</b>
+<div class="list">
+  <dl>
+    <dt>01100 <span class="small">M</span></dt><dd><a href="/pathway/map01100">Metabolic pathways</a></dd>
+    <dt>01110 <span class="small">M</span></dt><dd><a href="/pathway/map01110">Biosynthesis of secondary metabolites</a></dd>
+    <dt>01120 <span class="small">M</span></dt><dd><a href="/pathway/map01120">Microbial metabolism in diverse environments</a></dd>
+    <dt>01200 <span class="small">M R</span></dt><dd><a href="/pathway/map01200">Carbon metabolism</a></dd>
+    <dt>01210 <span class="small">M R</span></dt><dd><a href="/pathway/map01210">2-Oxocarboxylic acid metabolism</a></dd>
+    <dt>01212 <span class="small">M R</span></dt><dd><a href="/pathway/map01212">Fatty acid metabolism</a></dd>
+    <dt>01230 <span class="small">M R</span></dt><dd><a href="/pathway/map01230">Biosynthesis of amino acids</a></dd>
+    <dt>01232 <span class="small">M R</span></dt><dd><a href="/pathway/map01232">Nucleotide metabolism</a></dd>
+    <dt>01250 <span class="small">M R</span></dt><dd><a href="/pathway/map01250">Biosynthesis of nucleotide sugars</a></dd>
+    <dt>01240 <span class="small">M R</span></dt><dd><a href="/pathway/map01240">Biosynthesis of cofactors</a></dd>
+    <dt>01220 <span class="small">M R</span></dt><dd><a href="/pathway/map01220">Degradation of aromatic compounds</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="carbohydrate">1.1 Carbohydrate metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00010 <span class="small">M N</span></dt><dd><a href="/pathway/map00010">Glycolysis / Gluconeogenesis</a></dd>
+    <dt>00020 <span class="small">M N</span></dt><dd><a href="/pathway/map00020">Citrate cycle (TCA cycle)</a></dd>
+    <dt>00030 <span class="small">M</span></dt><dd><a href="/pathway/map00030">Pentose phosphate pathway</a></dd>
+    <dt>00040 <span class="small">M</span></dt><dd><a href="/pathway/map00040">Pentose and glucuronate interconversions</a></dd>
+    <dt>00051 <span class="small">M</span></dt><dd><a href="/pathway/map00051">Fructose and mannose metabolism</a></dd>
+    <dt>00052 <span class="small">M N</span></dt><dd><a href="/pathway/map00052">Galactose metabolism</a></dd>
+    <dt>00053 <span class="small">M</span></dt><dd><a href="/pathway/map00053">Ascorbate and aldarate metabolism</a></dd>
+    <dt>00500 <span class="small">M N</span></dt><dd><a href="/pathway/map00500">Starch and sucrose metabolism</a></dd>
+    <dt>00520 <span class="small">M N</span></dt><dd><a href="/pathway/map00520">Amino sugar and nucleotide sugar metabolism</a></dd>
+    <dt>00620 <span class="small">M N</span></dt><dd><a href="/pathway/map00620">Pyruvate metabolism</a></dd>
+    <dt>00630 <span class="small">M</span></dt><dd><a href="/pathway/map00630">Glyoxylate and dicarboxylate metabolism</a></dd>
+    <dt>00640 <span class="small">M</span></dt><dd><a href="/pathway/map00640">Propanoate metabolism</a></dd>
+    <dt>00650 <span class="small">M</span></dt><dd><a href="/pathway/map00650">Butanoate metabolism</a></dd>
+    <dt>00660 <span class="small">M</span></dt><dd><a href="/pathway/map00660">C5-Branched dibasic acid metabolism</a></dd>
+    <dt>00562 <span class="small">M</span></dt><dd><a href="/pathway/map00562">Inositol phosphate metabolism</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="energy">1.2 Energy metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00190 <span class="small">M</span></dt><dd><a href="/pathway/map00190">Oxidative phosphorylation</a></dd>
+    <dt>00195 <span class="small">M</span></dt><dd><a href="/pathway/map00195">Photosynthesis</a></dd>
+    <dt>00196</dt><dd><a href="/pathway/map00196">Photosynthesis - antenna proteins</a></dd>
+    <dt>00710 <span class="small">M</span></dt><dd><a href="/pathway/map00710">Carbon fixation in photosynthetic organisms</a></dd>
+    <dt>00720 <span class="small">M</span></dt><dd><a href="/pathway/map00720">Carbon fixation pathways in prokaryotes</a></dd>
+    <dt>00680 <span class="small">M</span></dt><dd><a href="/pathway/map00680">Methane metabolism</a></dd>
+    <dt>00910 <span class="small">M</span></dt><dd><a href="/pathway/map00910">Nitrogen metabolism</a></dd>
+    <dt>00920 <span class="small">M</span></dt><dd><a href="/pathway/map00920">Sulfur metabolism</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="lipid">1.3 Lipid metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00061 <span class="small">M</span></dt><dd><a href="/pathway/map00061">Fatty acid biosynthesis</a></dd>
+    <dt>00062 <span class="small">M</span></dt><dd><a href="/pathway/map00062">Fatty acid elongation</a></dd>
+    <dt>00071 <span class="small">M N</span></dt><dd><a href="/pathway/map00071">Fatty acid degradation</a></dd>
+    <dt>00073</dt><dd><a href="/pathway/map00073">Cutin, suberine and wax biosynthesis</a></dd>
+    <dt>00100 <span class="small">M N</span></dt><dd><a href="/pathway/map00100">Steroid biosynthesis</a></dd>
+    <dt>00120 <span class="small">M N</span></dt><dd><a href="/pathway/map00120">Primary bile acid biosynthesis</a></dd>
+    <dt>00121</dt><dd><a href="/pathway/map00121">Secondary bile acid biosynthesis</a></dd>
+    <dt>00140 <span class="small">M N</span></dt><dd><a href="/pathway/map00140">Steroid hormone biosynthesis</a></dd>
+    <dt>00561 <span class="small">M</span></dt><dd><a href="/pathway/map00561">Glycerolipid metabolism</a></dd>
+    <dt>00564 <span class="small">M</span></dt><dd><a href="/pathway/map00564">Glycerophospholipid metabolism</a></dd>
+    <dt>00565 <span class="small">M</span></dt><dd><a href="/pathway/map00565">Ether lipid metabolism</a></dd>
+    <dt>00600 <span class="small">M N</span></dt><dd><a href="/pathway/map00600">Sphingolipid metabolism</a></dd>
+    <dt>00590</dt><dd><a href="/pathway/map00590">Arachidonic acid metabolism</a></dd>
+    <dt>00591</dt><dd><a href="/pathway/map00591">Linoleic acid metabolism</a></dd>
+    <dt>00592 <span class="small">M</span></dt><dd><a href="/pathway/map00592">alpha-Linolenic acid metabolism</a></dd>
+    <dt>01040 <span class="small">M N</span></dt><dd><a href="/pathway/map01040">Biosynthesis of unsaturated fatty acids</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="nucleotide">1.4 Nucleotide metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00230 <span class="small">M N</span></dt><dd><a href="/pathway/map00230">Purine metabolism</a></dd>
+    <dt>00240 <span class="small">M</span></dt><dd><a href="/pathway/map00240">Pyrimidine metabolism</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="amino">1.5 Amino acid metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00250 <span class="small">M</span></dt><dd><a href="/pathway/map00250">Alanine, aspartate and glutamate metabolism</a></dd>
+    <dt>00260 <span class="small">M N</span></dt><dd><a href="/pathway/map00260">Glycine, serine and threonine metabolism</a></dd>
+    <dt>00270 <span class="small">M N</span></dt><dd><a href="/pathway/map00270">Cysteine and methionine metabolism</a></dd>
+    <dt>00280 <span class="small">M N</span></dt><dd><a href="/pathway/map00280">Valine, leucine and isoleucine degradation</a></dd>
+    <dt>00290 <span class="small">M</span></dt><dd><a href="/pathway/map00290">Valine, leucine and isoleucine biosynthesis</a></dd>
+    <dt>00300 <span class="small">M</span></dt><dd><a href="/pathway/map00300">Lysine biosynthesis</a></dd>
+    <dt>00310 <span class="small">M N</span></dt><dd><a href="/pathway/map00310">Lysine degradation</a></dd>
+    <dt>00220 <span class="small">M N</span></dt><dd><a href="/pathway/map00220">Arginine biosynthesis</a></dd>
+    <dt>00330 <span class="small">M N</span></dt><dd><a href="/pathway/map00330">Arginine and proline metabolism</a></dd>
+    <dt>00340 <span class="small">M N</span></dt><dd><a href="/pathway/map00340">Histidine metabolism</a></dd>
+    <dt>00350 <span class="small">M N</span></dt><dd><a href="/pathway/map00350">Tyrosine metabolism</a></dd>
+    <dt>00360 <span class="small">M</span></dt><dd><a href="/pathway/map00360">Phenylalanine metabolism</a></dd>
+    <dt>00380 <span class="small">M N</span></dt><dd><a href="/pathway/map00380">Tryptophan metabolism</a></dd>
+    <dt>00400 <span class="small">M N</span></dt><dd><a href="/pathway/map00400">Phenylalanine, tyrosine and tryptophan biosynthesis</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="other">1.6 Metabolism of other amino acids</b>
+<div class="list">
+  <dl>
+    <dt>00410 <span class="small">M</span></dt><dd><a href="/pathway/map00410">beta-Alanine metabolism</a></dd>
+    <dt>00430 <span class="small">M</span></dt><dd><a href="/pathway/map00430">Taurine and hypotaurine metabolism</a></dd>
+    <dt>00440</dt><dd><a href="/pathway/map00440">Phosphonate and phosphinate metabolism</a></dd>
+    <dt>00450</dt><dd><a href="/pathway/map00450">Selenocompound metabolism</a></dd>
+    <dt>00460 <span class="small">M</span></dt><dd><a href="/pathway/map00460">Cyanoamino acid metabolism</a></dd>
+    <dt>00470 <span class="small">M</span></dt><dd><a href="/pathway/map00470">D-Amino acid metabolism</a></dd>
+    <dt>00480 <span class="small">M N</span></dt><dd><a href="/pathway/map00480">Glutathione metabolism</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="glycan">1.7 Glycan biosynthesis and metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00510 <span class="small">M N</span></dt><dd><a href="/pathway/map00510">N-Glycan biosynthesis</a></dd>
+    <dt>00513 <span class="small">M</span></dt><dd><a href="/pathway/map00513">Various types of N-glycan biosynthesis</a></dd>
+    <dt>00512 <span class="small">M</span></dt><dd><a href="/pathway/map00512">Mucin type O-glycan biosynthesis</a></dd>
+    <dt>00515 <span class="small">M N</span></dt><dd><a href="/pathway/map00515">Mannose type O-glycan biosynthesis</a></dd>
+    <dt>00514</dt><dd><a href="/pathway/map00514">Other types of O-glycan biosynthesis</a></dd>
+    <dt>00532 <span class="small">M N</span></dt><dd><a href="/pathway/map00532">Glycosaminoglycan biosynthesis - chondroitin sulfate / dermatan sulfate</a></dd>
+    <dt>00534 <span class="small">M N</span></dt><dd><a href="/pathway/map00534">Glycosaminoglycan biosynthesis - heparan sulfate / heparin</a></dd>
+    <dt>00533</dt><dd><a href="/pathway/map00533">Glycosaminoglycan biosynthesis - keratan sulfate</a></dd>
+    <dt>00531 <span class="small">M N</span></dt><dd><a href="/pathway/map00531">Glycosaminoglycan degradation</a></dd>
+    <dt>00563 <span class="small">M N</span></dt><dd><a href="/pathway/map00563">Glycosylphosphatidylinositol (GPI)-anchor biosynthesis</a></dd>
+    <dt>00601 <span class="small">M N</span></dt><dd><a href="/pathway/map00601">Glycosphingolipid biosynthesis - lacto and neolacto series</a></dd>
+    <dt>00603 <span class="small">M N</span></dt><dd><a href="/pathway/map00603">Glycosphingolipid biosynthesis - globo and isoglobo series</a></dd>
+    <dt>00604 <span class="small">M</span></dt><dd><a href="/pathway/map00604">Glycosphingolipid biosynthesis - ganglio series</a></dd>
+    <dt>00511</dt><dd><a href="/pathway/map00511">Other glycan degradation</a></dd>
+    <dt>00540 <span class="small">M</span></dt><dd><a href="/pathway/map00540">Lipopolysaccharide biosynthesis</a></dd>
+    <dt>00542</dt><dd><a href="/pathway/map00542">O-Antigen repeat unit biosynthesis</a></dd>
+    <dt>00541 <span class="small">M</span></dt><dd><a href="/pathway/map00541">O-Antigen nucleotide sugar biosynthesis</a></dd>
+    <dt>00550</dt><dd><a href="/pathway/map00550">Peptidoglycan biosynthesis</a></dd>
+    <dt>00552</dt><dd><a href="/pathway/map00552">Teichoic acid biosynthesis</a></dd>
+    <dt>00571</dt><dd><a href="/pathway/map00571">Lipoarabinomannan (LAM) biosynthesis</a></dd>
+    <dt>00572</dt><dd><a href="/pathway/map00572">Arabinogalactan biosynthesis - Mycobacterium</a></dd>
+    <dt>00543</dt><dd><a href="/pathway/map00543">Exopolysaccharide biosynthesis</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="cofactor">1.8 Metabolism of cofactors and vitamins</b>
+<div class="list">
+  <dl>
+    <dt>00730 <span class="small">M</span></dt><dd><a href="/pathway/map00730">Thiamine metabolism</a></dd>
+    <dt>00740 <span class="small">M</span></dt><dd><a href="/pathway/map00740">Riboflavin metabolism</a></dd>
+    <dt>00750 <span class="small">M</span></dt><dd><a href="/pathway/map00750">Vitamin B6 metabolism</a></dd>
+    <dt>00760 <span class="small">M N</span></dt><dd><a href="/pathway/map00760">Nicotinate and nicotinamide metabolism</a></dd>
+    <dt>00770 <span class="small">M</span></dt><dd><a href="/pathway/map00770">Pantothenate and CoA biosynthesis</a></dd>
+    <dt>00780 <span class="small">M</span></dt><dd><a href="/pathway/map00780">Biotin metabolism</a></dd>
+    <dt>00785 <span class="small">M N</span></dt><dd><a href="/pathway/map00785">Lipoic acid metabolism</a></dd>
+    <dt>00790 <span class="small">M N</span></dt><dd><a href="/pathway/map00790">Folate biosynthesis</a></dd>
+    <dt>00670 <span class="small">M N</span></dt><dd><a href="/pathway/map00670">One carbon pool by folate</a></dd>
+    <dt>00830</dt><dd><a href="/pathway/map00830">Retinol metabolism</a></dd>
+    <dt>00860 <span class="small">M N</span></dt><dd><a href="/pathway/map00860">Porphyrin metabolism</a></dd>
+    <dt>00130 <span class="small">M</span></dt><dd><a href="/pathway/map00130">Ubiquinone and other terpenoid-quinone biosynthesis</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="pk">1.9 Metabolism of terpenoids and polyketides</b>
+<div class="list">
+  <dl>
+    <dt>00900 <span class="small">M N</span></dt><dd><a href="/pathway/map00900">Terpenoid backbone biosynthesis</a></dd>
+    <dt>00902</dt><dd><a href="/pathway/map00902">Monoterpenoid biosynthesis</a></dd>
+    <dt>00909</dt><dd><a href="/pathway/map00909">Sesquiterpenoid and triterpenoid biosynthesis</a></dd>
+    <dt>00904 <span class="small">M</span></dt><dd><a href="/pathway/map00904">Diterpenoid biosynthesis</a><br>Including: <a href="/pathway/map00904+M00927">Gibberellin biosynthesis</a></dd>
+    <dt>00906 <span class="small">M</span></dt><dd><a href="/pathway/map00906">Carotenoid biosynthesis</a></dd>
+    <dt>00905 <span class="small">M</span></dt><dd><a href="/pathway/map00905">Brassinosteroid biosynthesis</a></dd>
+    <dt>00981</dt><dd><a href="/pathway/map00981">Insect hormone biosynthesis</a></dd>
+    <dt>00908</dt><dd><a href="/pathway/map00908">Zeatin biosynthesis</a></dd>
+    <dt>00903</dt><dd><a href="/pathway/map00903">Limonene degradation</a></dd>
+    <dt>00907</dt><dd><a href="/pathway/map00907">Pinene, camphor and geraniol degradation</a></dd>
+    <dt>01052</dt><dd><a href="/pathway/map01052">Type I polyketide structures</a></dd>
+    <dt>00522 <span class="small">M</span></dt><dd><a href="/pathway/map00522">Biosynthesis of 12-, 14- and 16-membered macrolides</a><br>Including: <a href="/pathway/map00522+M00773">Tylosin biosynthesis</a>, <a href="/pathway/map00522+M00934">Mycinamicin biosynthesis</a>, <a href="/pathway/map00522+M00774">Erythromycin biosynthesis</a>, <a href="/pathway/map00522+M00775">Oleandomycin biosynthesis</a>, <a href="/pathway/map00522+M00776">Pikromycin/methymycin biosynthesis</a>, <a href="/pathway/map00522+M00777">Avermectin biosynthesis</a></dd>
+    <dt>01051</dt><dd><a href="/pathway/map01051">Biosynthesis of ansamycins</a></dd>
+    <dt>01059 <span class="small">M</span></dt><dd><a href="/pathway/map01059">Biosynthesis of enediyne antibiotics</a></dd>
+    <dt>01056 <span class="small">M</span></dt><dd><a href="/pathway/map01056">Biosynthesis of type II polyketide backbone</a></dd>
+    <dt>01057 <span class="small">M</span></dt><dd><a href="/pathway/map01057">Biosynthesis of type II polyketide products</a></dd>
+    <dt>00253 <span class="small">M</span></dt><dd><a href="/pathway/map00253">Tetracycline biosynthesis</a></dd>
+    <dt>00523 <span class="small">M</span></dt><dd><a href="/pathway/map00523">Polyketide sugar unit biosynthesis</a></dd>
+    <dt>01054</dt><dd><a href="/pathway/map01054">Nonribosomal peptide structures</a></dd>
+    <dt>01053</dt><dd><a href="/pathway/map01053">Biosynthesis of siderophore group nonribosomal peptides</a></dd>
+    <dt>01055</dt><dd><a href="/pathway/map01055">Biosynthesis of vancomycin group antibiotics</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="secondary">1.10 Biosynthesis of other secondary metabolites</b>
+<div class="list">
+  <dl>
+    <dt>00940 <span class="small">M</span></dt><dd><a href="/pathway/map00940">Phenylpropanoid biosynthesis</a></dd>
+    <dt>00945</dt><dd><a href="/pathway/map00945">Stilbenoid, diarylheptanoid and gingerol biosynthesis</a></dd>
+    <dt>00941 <span class="small">M</span></dt><dd><a href="/pathway/map00941">Flavonoid biosynthesis</a></dd>
+    <dt>00944</dt><dd><a href="/pathway/map00944">Flavone and flavonol biosynthesis</a></dd>
+    <dt>00942</dt><dd><a href="/pathway/map00942">Anthocyanin biosynthesis</a></dd>
+    <dt>00943 <span class="small">M</span></dt><dd><a href="/pathway/map00943">Isoflavonoid biosynthesis</a></dd>
+    <dt>00946 <span class="small">M</span></dt><dd><a href="/pathway/map00946">Degradation of flavonoids</a></dd>
+    <dt>00901 <span class="small">M</span></dt><dd><a href="/pathway/map00901">Indole alkaloid biosynthesis</a></dd>
+    <dt>00403 <span class="small">M</span></dt><dd><a href="/pathway/map00403">Indole diterpene alkaloid biosynthesis</a></dd>
+    <dt>00950 <span class="small">M</span></dt><dd><a href="/pathway/map00950">Isoquinoline alkaloid biosynthesis</a></dd>
+    <dt>00960</dt><dd><a href="/pathway/map00960">Tropane, piperidine and pyridine alkaloid biosynthesis</a></dd>
+    <dt>00996</dt><dd><a href="/pathway/map00996">Biosynthesis of various alkaloids</a><br>Including: Cucurbitacin biosynthesis, Solanine and tomatine biosynthesis, Ephedrine biosynthesis, Capsaicin biosynthesis, Acridone alkaloid biosynthesis</dd>
+    <dt>00232 <span class="small">M</span></dt><dd><a href="/pathway/map00232">Caffeine metabolism</a></dd>
+    <dt>00965 <span class="small">M</span></dt><dd><a href="/pathway/map00965">Betalain biosynthesis</a></dd>
+    <dt>00966 <span class="small">M</span></dt><dd><a href="/pathway/map00966">Glucosinolate biosynthesis</a></dd>
+    <dt>00402</dt><dd><a href="/pathway/map00402">Benzoxazinoid biosynthesis</a></dd>
+    <dt>00311 <span class="small">M</span></dt><dd><a href="/pathway/map00311">Penicillin and cephalosporin biosynthesis</a></dd>
+    <dt>00332 <span class="small">M</span></dt><dd><a href="/pathway/map00332">Carbapenem biosynthesis</a></dd>
+    <dt>00261 <span class="small">M</span></dt><dd><a href="/pathway/map00261">Monobactam biosynthesis</a></dd>
+    <dt>00331 <span class="small">M</span></dt><dd><a href="/pathway/map00331">Clavulanic acid biosynthesis</a></dd>
+    <dt>00521 <span class="small">M</span></dt><dd><a href="/pathway/map00521">Streptomycin biosynthesis</a></dd>
+    <dt>00524</dt><dd><a href="/pathway/map00524">Neomycin, kanamycin and gentamicin biosynthesis</a></dd>
+    <dt>00525 <span class="small">M</span></dt><dd><a href="/pathway/map00525">Acarbose and validamycin biosynthesis</a></dd>
+    <dt>00401</dt><dd><a href="/pathway/map00401">Novobiocin biosynthesis</a></dd>
+    <dt>00404 <span class="small">M</span></dt><dd><a href="/pathway/map00404">Staurosporine biosynthesis</a></dd>
+    <dt>00405 <span class="small">M</span></dt><dd><a href="/pathway/map00405">Phenazine biosynthesis</a></dd>
+    <dt>00333 <span class="small">M</span></dt><dd><a href="/pathway/map00333">Prodigiosin biosynthesis</a></dd>
+    <dt>00254 <span class="small">M</span></dt><dd><a href="/pathway/map00254">Aflatoxin biosynthesis</a></dd>
+    <dt>00998 <span class="small">M</span></dt><dd><a href="/pathway/map00998">Biosynthesis of various antibiotics</a><br>Including: <a href="/pathway/map00998+M00877">Kanosamine biosynthesis</a>, <a href="/pathway/map00998+M00848">Aurachin biosynthesis</a>, <a href="/pathway/map00998+M00787">Bacilysin biosynthesis</a>, <a href="/pathway/map00998+M00889">Puromycin biosynthesis</a>, <a href="/pathway/map00998+M00904">Dapdiamides biosynthesis</a>, <a href="/pathway/map00998+M00903">Fosfomycin biosynthesis</a>, <a href="/pathway/map00999+M00951">Cremeomycin biosynthesis</a>, <a href="/pathway/map00998+M00969">Fumagillin biosynthesis</a>, <a href="/pathway/map00998+M00819">Pentalenolactone biosynthesis</a>, <a href="/pathway/map00998+M00788">Terpentecin biosynthesis</a>, <a href="/pathway/map00998+M00890">Roseoflavin biosynthesis</a>, <a href="/pathway/map00998+M00785">Cycloserine biosynthesis</a></dd>
+    <dt>00999 <span class="small">M</span></dt><dd><a href="/pathway/map00999">Biosynthesis of various plant secondary metabolites</a><br>Including: <a href="/pathway/map00999+M00900">Crocin biosynthesis</a>, Ginsenoside biosynthesis, <a href="/pathway/map00999+M00971">Saponin adjuvant biosynthesis</a>, <a href="/pathway/map00999+M00894">Cannabidiol biosynthesis</a>, <a href="/pathway/map00999+M00953">Mugineic acid biosynthesis</a>, Pentagalloylglucose biosynthesis, <a href="/pathway/map00999+M00952">Benzoxazinoid biosynthesis</a>, Gramine biosynthesis, Coumarin biosynthesis, Furanocoumarin biosynthesis, Hordatine biosynthesis, <a href="/pathway/map00999+M00902">Podophyllotoxin biosynthesis</a></dd>
+    <dt>00997 <span class="small">M</span></dt><dd><a href="/pathway/map00997">Biosynthesis of various other secondary metabolites</a><br>Including: <a href="/pathway/map00997+M00891">Ditryptophenaline biosynthesis</a>, <a href="/pathway/map00997+M00901">Fumiquinazoline D biosynthesis</a>, Paerucumarin biosynthesis, <a href="/pathway/map00997+M00875">Staphyloferrin B biosynthesis</a>, <a href="/pathway/map00997+M00921">Cyclooctatin biosynthesis</a>, <a href="/pathway/map00997+M00893">Lovastatin biosynthesis</a>, <a href="/pathway/map00997+M00905">Grixazone biosynthesis</a>, <a href="/pathway/map00997+M00876">Staphyloferrin A biosynthesis</a>, <a href="/pathway/map00997+M00906">Ethynylserine biosynthesis</a>, <a href="/pathway/map00997+M00918">Aerobactin biosynthesis</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="xenobiotics">1.11 Xenobiotics biodegradation and metabolism</b>
+<div class="list">
+  <dl>
+    <dt>00362 <span class="small">M</span></dt><dd><a href="/pathway/map00362">Benzoate degradation</a></dd>
+    <dt>00627 <span class="small">M</span></dt><dd><a href="/pathway/map00627">Aminobenzoate degradation</a></dd>
+    <dt>00364</dt><dd><a href="/pathway/map00364">Fluorobenzoate degradation</a></dd>
+    <dt>00625</dt><dd><a href="/pathway/map00625">Chloroalkane and chloroalkene degradation</a></dd>
+    <dt>00361 <span class="small">M</span></dt><dd><a href="/pathway/map00361">Chlorocyclohexane and chlorobenzene degradation</a></dd>
+    <dt>00623 <span class="small">M</span></dt><dd><a href="/pathway/map00623">Toluene degradation</a></dd>
+    <dt>00622 <span class="small">M</span></dt><dd><a href="/pathway/map00622">Xylene degradation</a></dd>
+    <dt>00633</dt><dd><a href="/pathway/map00633">Nitrotoluene degradation</a></dd>
+    <dt>00642</dt><dd><a href="/pathway/map00642">Ethylbenzene degradation</a></dd>
+    <dt>00643</dt><dd><a href="/pathway/map00643">Styrene degradation</a></dd>
+    <dt>00791</dt><dd><a href="/pathway/map00791">Atrazine degradation</a></dd>
+    <dt>00930</dt><dd><a href="/pathway/map00930">Caprolactam degradation</a></dd>
+    <dt>00363</dt><dd><a href="/pathway/map00363">Bisphenol degradation</a></dd>
+    <dt>00621 <span class="small">M</span></dt><dd><a href="/pathway/map00621">Dioxin degradation</a></dd>
+    <dt>00626 <span class="small">M</span></dt><dd><a href="/pathway/map00626">Naphthalene degradation</a></dd>
+    <dt>00624 <span class="small">M</span></dt><dd><a href="/pathway/map00624">Polycyclic aromatic hydrocarbon degradation</a></dd>
+    <dt>00365</dt><dd><a href="/pathway/map00365">Furfural degradation</a></dd>
+    <dt>00984</dt><dd><a href="/pathway/map00984">Steroid degradation</a></dd>
+    <dt>00980</dt><dd><a href="/pathway/map00980">Metabolism of xenobiotics by cytochrome P450</a></dd>
+    <dt>00982</dt><dd><a href="/pathway/map00982">Drug metabolism - cytochrome P450</a></dd>
+    <dt>00983</dt><dd><a href="/pathway/map00983">Drug metabolism - other enzymes</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b id="chemical">1.12 Chemical structure transformation maps</b>
+<div class="list">
+  <dl>
+    <dt>01010</dt><dd><a href="/pathway/map01010">Overview of biosynthetic pathways</a></dd>
+    <dt>01060</dt><dd><a href="/pathway/map01060">Biosynthesis of plant secondary metabolites</a></dd>
+    <dt>01061</dt><dd><a href="/pathway/map01061">Biosynthesis of phenylpropanoids</a></dd>
+    <dt>01062</dt><dd><a href="/pathway/map01062">Biosynthesis of terpenoids and steroids</a></dd>
+    <dt>01063</dt><dd><a href="/pathway/map01063">Biosynthesis of alkaloids derived from shikimate pathway</a></dd>
+    <dt>01064</dt><dd><a href="/pathway/map01064">Biosynthesis of alkaloids derived from ornithine, lysine and nicotinic acid</a></dd>
+    <dt>01065</dt><dd><a href="/pathway/map01065">Biosynthesis of alkaloids derived from histidine and purine</a></dd>
+    <dt>01066</dt><dd><a href="/pathway/map01066">Biosynthesis of alkaloids derived from terpenoid and polyketide</a></dd>
+    <dt>01070</dt><dd><a href="/pathway/map01070">Biosynthesis of plant hormones</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<h4 id="genetic">2. Genetic Information Processing</h4>
+
+<b>2.1 Transcription</b>
+<div class="list">
+  <dl>
+    <dt>03020</dt><dd><a href="/pathway/map03020">RNA polymerase</a></dd>
+    <dt>03022</dt><dd><a href="/pathway/map03022">Basal transcription factors</a></dd>
+    <dt>03040</dt><dd><a href="/pathway/map03040">Spliceosome</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>2.2 Translation</b>
+<div class="list">
+  <dl>
+    <dt>03010</dt><dd><a href="/pathway/map03010">Ribosome</a></dd>
+    <dt>00970</dt><dd><a href="/pathway/map00970">Aminoacyl-tRNA biosynthesis</a></dd>
+    <dt>03013</dt><dd><a href="/pathway/map03013">Nucleocytoplasmic transport</a></dd>
+    <dt>03015</dt><dd><a href="/pathway/map03015">mRNA surveillance pathway</a></dd>
+    <dt>03008</dt><dd><a href="/pathway/map03008">Ribosome biogenesis in eukaryotes</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>2.3 Folding, sorting and degradation</b>
+<div class="list">
+  <dl>
+    <dt>03060</dt><dd><a href="/pathway/map03060">Protein export</a></dd>
+    <dt>04141 <span class="small">N</span></dt><dd><a href="/pathway/map04141">Protein processing in endoplasmic reticulum</a></dd>
+    <dt>04130</dt><dd><a href="/pathway/map04130">SNARE interactions in vesicular transport</a></dd>
+    <dt>04120</dt><dd><a href="/pathway/map04120">Ubiquitin mediated proteolysis</a></dd>
+    <dt>04122</dt><dd><a href="/pathway/map04122">Sulfur relay system</a></dd>
+    <dt>03050</dt><dd><a href="/pathway/map03050">Proteasome</a></dd>
+    <dt>03018</dt><dd><a href="/pathway/map03018">RNA degradation</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>2.4 Replication and repair</b>
+<div class="list">
+  <dl>
+    <dt>03030</dt><dd><a href="/pathway/map03030">DNA replication</a></dd>
+    <dt>03410 <span class="small">N</span></dt><dd><a href="/pathway/map03410">Base excision repair</a></dd>
+    <dt>03420 <span class="small">N</span></dt><dd><a href="/pathway/map03420">Nucleotide excision repair</a></dd>
+    <dt>03430</dt><dd><a href="/pathway/map03430">Mismatch repair</a></dd>
+    <dt>03440</dt><dd><a href="/pathway/map03440">Homologous recombination</a></dd>
+    <dt>03450</dt><dd><a href="/pathway/map03450">Non-homologous end-joining</a></dd>
+    <dt>03460</dt><dd><a href="/pathway/map03460">Fanconi anemia pathway</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>2.5 Chromosome</b>
+<div class="list">
+  <dl>
+    <dt>03082</dt><dd><a href="/pathway/map03082">ATP-dependent chromatin remodeling</a> <span class="new">New!</span></dd>
+    <dt>03083 <span class="small">N</span></dt><dd><a href="/pathway/map03083">Polycomb repressive complex</a> <span class="new">New!</span></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>2.6 Information processing in viruses</b>
+<div class="list">
+  <dl>
+    <dt>03230</dt><dd><a href="/pathway/map03230">Viral genome structure</a></dd>
+    <dt>03240</dt><dd><a href="/pathway/map03240">Viral replication</a></dd>
+    <dt>03250</dt><dd><a href="/kegg-bin/show_pathway?map=03250&amp;orgs=hsa+pathogen">Viral life cycle - HIV-1</a></dd>
+    <dt>03260</dt><dd><a href="/pathway/map03260">Virion - Human immunodeficiency virus</a></dd>
+    <dt>03262</dt><dd><a href="/pathway/map03262">Virion - Coronavirus</a></dd>
+    <dt>03261</dt><dd><a href="/pathway/map03261">Virion - Influenza A virus</a></dd>
+    <dt>03263</dt><dd><a href="/pathway/map03263">Virion - Enterovirus</a></dd>
+    <dt>03264</dt><dd><a href="/pathway/map03264">Virion - Flavivirus</a></dd>
+    <dt>03265</dt><dd><a href="/pathway/map03265">Virion - Lyssavirus</a></dd>
+    <dt>03266</dt><dd><a href="/pathway/map03266">Virion - Herpesvirus</a></dd>
+    <dt>03268</dt><dd><a href="/pathway/map03268">Virion - Orthopoxvirus</a></dd>
+    <dt>03267</dt><dd><a href="/pathway/map03267">Virion - Adenovirus</a></dd>
+    <dt>03269</dt><dd><a href="/pathway/map03269">Virion - Bacteriophage T4</a> <span class="new">New!</span></dd>
+    <dt>03259</dt><dd><a href="/pathway/map03259">Virion - Bacteriophage T7</a> <span class="new">New!</span></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<h4 id="environmental">3. Environmental Information Processing</h4>
+
+<b>3.1 Membrane transport</b>
+<div class="list">
+  <dl>
+    <dt>02010</dt><dd><a href="/pathway/map02010">ABC transporters</a></dd>
+    <dt>02060</dt><dd><a href="/pathway/map02060">Phosphotransferase system (PTS)</a></dd>
+    <dt>03070</dt><dd><a href="/pathway/map03070">Bacterial secretion system</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>3.2 Signal transduction</b>
+<div class="list">
+  <dl>
+    <dt>02020</dt><dd><a href="/pathway/map02020">Two-component system</a></dd>
+    <dt>04010 <span class="small">N</span></dt><dd><a href="/pathway/hsa04010">MAPK signaling pathway</a></dd>
+    <dt>04013</dt><dd><a href="/pathway/dme04013">MAPK signaling pathway - fly</a></dd>
+    <dt>04016</dt><dd><a href="/pathway/ath04016">MAPK signaling pathway - plant</a></dd>
+    <dt>04011</dt><dd><a href="/pathway/sce04011">MAPK signaling pathway - yeast</a></dd>
+    <dt>04012 <span class="small">N</span></dt><dd><a href="/pathway/hsa04012">ErbB signaling pathway</a></dd>
+    <dt>04014 <span class="small">N</span></dt><dd><a href="/pathway/hsa04014">Ras signaling pathway</a></dd>
+    <dt>04015</dt><dd><a href="/pathway/hsa04015">Rap1 signaling pathway</a></dd>
+    <dt>04310 <span class="small">N</span></dt><dd><a href="/pathway/hsa04310">Wnt signaling pathway</a></dd>
+    <dt>04330 <span class="small">N</span></dt><dd><a href="/pathway/hsa04330">Notch signaling pathway</a></dd>
+    <dt>04340 <span class="small">N</span></dt><dd><a href="/pathway/hsa04340">Hedgehog signaling pathway</a></dd>
+    <dt>04341</dt><dd><a href="/pathway/dme04341">Hedgehog signaling pathway - fly</a></dd>
+    <dt>04350 <span class="small">N</span></dt><dd><a href="/pathway/hsa04350">TGF-beta signaling pathway</a></dd>
+    <dt>04390</dt><dd><a href="/pathway/hsa04390">Hippo signaling pathway</a></dd>
+    <dt>04391</dt><dd><a href="/pathway/dme04391">Hippo signaling pathway - fly</a></dd>
+    <dt>04392</dt><dd><a href="/pathway/hsa04392">Hippo signaling pathway - multiple species</a></dd>
+    <dt>04370</dt><dd><a href="/pathway/hsa04370">VEGF signaling pathway</a></dd>
+    <dt>04371</dt><dd><a href="/pathway/hsa04371">Apelin signaling pathway</a></dd>
+    <dt>04630 <span class="small">N</span></dt><dd><a href="/pathway/hsa04630">JAK-STAT signaling pathway</a></dd>
+    <dt>04064 <span class="small">N</span></dt><dd><a href="/pathway/hsa04064">NF-kappa B signaling pathway</a></dd>
+    <dt>04668 <span class="small">N</span></dt><dd><a href="/pathway/hsa04668">TNF signaling pathway</a></dd>
+    <dt>04066 <span class="small">N</span></dt><dd><a href="/pathway/hsa04066">HIF-1 signaling pathway</a></dd>
+    <dt>04068</dt><dd><a href="/pathway/hsa04068">FoxO signaling pathway</a></dd>
+    <dt>04020 <span class="small">N</span></dt><dd><a href="/pathway/hsa04020">Calcium signaling pathway</a></dd>
+    <dt>04070</dt><dd><a href="/pathway/hsa04070">Phosphatidylinositol signaling system</a></dd>
+    <dt>04072</dt><dd><a href="/pathway/hsa04072">Phospholipase D signaling pathway</a></dd>
+    <dt>04071</dt><dd><a href="/pathway/hsa04071">Sphingolipid signaling pathway</a></dd>
+    <dt>04024 <span class="small">N</span></dt><dd><a href="/pathway/hsa04024">cAMP signaling pathway</a></dd>
+    <dt>04022</dt><dd><a href="/pathway/hsa04022">cGMP-PKG signaling pathway</a></dd>
+    <dt>04151 <span class="small">N</span></dt><dd><a href="/pathway/hsa04151">PI3K-Akt signaling pathway</a></dd>
+    <dt>04152</dt><dd><a href="/pathway/hsa04152">AMPK signaling pathway</a></dd>
+    <dt>04150 <span class="small">N</span></dt><dd><a href="/pathway/hsa04150">mTOR signaling pathway</a></dd>
+    <dt>04075</dt><dd><a href="/pathway/ath04075">Plant hormone signal transduction</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>3.3 Signaling molecules and interaction</b>
+<div class="list">
+  <dl>
+    <dt>04080</dt><dd><a href="/pathway/hsa04080">Neuroactive ligand-receptor interaction</a></dd>
+    <dt>04060</dt><dd><a href="/pathway/hsa04060">Cytokine-cytokine receptor interaction</a></dd>
+    <dt>04061</dt><dd><a href="/pathway/hsa04061">Viral protein interaction with cytokine and cytokine receptor</a></dd>
+    <dt>04512</dt><dd><a href="/pathway/hsa04512">ECM-receptor interaction</a></dd>
+    <dt>04514</dt><dd><a href="/pathway/hsa04514">Cell adhesion molecules</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<h4 id="cellular">4. Cellular Processes</h4>
+
+<b>4.1 Transport and catabolism</b>
+<div class="list">
+  <dl>
+    <dt>04144</dt><dd><a href="/pathway/hsa04144">Endocytosis</a></dd>
+    <dt>04145 <span class="small">N</span></dt><dd><a href="/pathway/hsa04145">Phagosome</a></dd>
+    <dt>04142</dt><dd><a href="/pathway/hsa04142">Lysosome</a></dd>
+    <dt>04146</dt><dd><a href="/pathway/hsa04146">Peroxisome</a></dd>
+    <dt>04140 <span class="small">N</span></dt><dd><a href="/pathway/hsa04140">Autophagy - animal</a></dd>
+    <dt>04138</dt><dd><a href="/pathway/sce04138">Autophagy - yeast</a></dd>
+    <dt>04136</dt><dd><a href="/pathway/ath04136">Autophagy - other</a></dd>
+    <dt>04137 <span class="small">N</span></dt><dd><a href="/pathway/hsa04137">Mitophagy - animal</a></dd>
+    <dt>04139</dt><dd><a href="/pathway/sce04139">Mitophagy - yeast</a></dd>
+    <dt>04148</dt><dd><a href="/pathway/hsa04148">Efferocytosis</a> <span class="new">New!</span></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>4.2 Cell growth and death</b>
+<div class="list">
+  <dl>
+    <dt>04110 <span class="small">N</span></dt><dd><a href="/pathway/hsa04110">Cell cycle</a></dd>
+    <dt>04111</dt><dd><a href="/pathway/sce04111">Cell cycle - yeast</a></dd>
+    <dt>04112</dt><dd><a href="/pathway/ccr04112">Cell cycle - Caulobacter</a></dd>
+    <dt>04113</dt><dd><a href="/pathway/sce04113">Meiosis - yeast</a></dd>
+    <dt>04114</dt><dd><a href="/pathway/xla04114">Oocyte meiosis</a></dd>
+    <dt>04210 <span class="small">N</span></dt><dd><a href="/pathway/hsa04210">Apoptosis</a></dd>
+    <dt>04214</dt><dd><a href="/pathway/dme04214">Apoptosis - fly</a></dd>
+    <dt>04215</dt><dd><a href="/pathway/hsa04215">Apoptosis - multiple species</a></dd>
+    <dt>04216 <span class="small">N</span></dt><dd><a href="/pathway/hsa04216">Ferroptosis</a></dd>
+    <dt>04217 <span class="small">N</span></dt><dd><a href="/pathway/hsa04217">Necroptosis</a></dd>
+    <dt>04115</dt><dd><a href="/pathway/hsa04115">p53 signaling pathway</a></dd>
+    <dt>04218</dt><dd><a href="/pathway/hsa04218">Cellular senescence</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>4.3 Cellular community - eukaryotes</b>
+<div class="list">
+  <dl>
+    <dt>04510 <span class="small">N</span></dt><dd><a href="/pathway/hsa04510">Focal adhesion</a></dd>
+    <dt>04520</dt><dd><a href="/pathway/hsa04520">Adherens junction</a></dd>
+    <dt>04530 <span class="small">N</span></dt><dd><a href="/pathway/hsa04530">Tight junction</a></dd>
+    <dt>04540</dt><dd><a href="/pathway/hsa04540">Gap junction</a></dd>
+    <dt>04550</dt><dd><a href="/pathway/hsa04550">Signaling pathways regulating pluripotency of stem cells</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>4.4 Cellular community - prokaryotes</b>
+<div class="list">
+  <dl>
+    <dt>02024</dt><dd><a href="/pathway/map02024">Quorum sensing</a></dd>
+    <dt>05111</dt><dd><a href="/pathway/map05111">Biofilm formation - Vibrio cholerae</a></dd>
+    <dt>02025</dt><dd><a href="/pathway/map02025">Biofilm formation - Pseudomonas aeruginosa</a></dd>
+    <dt>02026</dt><dd><a href="/pathway/map02026">Biofilm formation - Escherichia coli</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>4.5 Cell motility</b>
+<div class="list">
+  <dl>
+    <dt>02030</dt><dd><a href="/pathway/map02030">Bacterial chemotaxis</a></dd>
+    <dt>02040</dt><dd><a href="/pathway/map02040">Flagellar assembly</a></dd>
+    <dt>04814</dt><dd><a href="/pathway/map04814">Motor proteins</a></dd>
+    <dt>04810 <span class="small">N</span></dt><dd><a href="/pathway/hsa04810">Regulation of actin cytoskeleton</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<h4 id="organismal">5. Organismal Systems</h4>
+
+<b>5.1 Immune system</b>
+<div class="list">
+  <dl>
+    <dt>04640</dt><dd><a href="/pathway/hsa04640">Hematopoietic cell lineage</a></dd>
+    <dt>04610 <span class="small">N</span></dt><dd><a href="/pathway/hsa04610">Complement and coagulation cascades</a></dd>
+    <dt>04611</dt><dd><a href="/pathway/hsa04611">Platelet activation</a></dd>
+    <dt>04613</dt><dd><a href="/pathway/hsa04613">Neutrophil extracellular trap formation</a></dd>
+    <dt>04620 <span class="small">N</span></dt><dd><a href="/pathway/hsa04620">Toll-like receptor signaling pathway</a></dd>
+    <dt>04624</dt><dd><a href="/pathway/dme04624">Toll and Imd signaling pathway</a></dd>
+    <dt>04621 <span class="small">N</span></dt><dd><a href="/pathway/hsa04621">NOD-like receptor signaling pathway</a></dd>
+    <dt>04622 <span class="small">N</span></dt><dd><a href="/pathway/hsa04622">RIG-I-like receptor signaling pathway</a></dd>
+    <dt>04623 <span class="small">N</span></dt><dd><a href="/pathway/hsa04623">Cytosolic DNA-sensing pathway</a></dd>
+    <dt>04625</dt><dd><a href="/pathway/hsa04625">C-type lectin receptor signaling pathway</a></dd>
+    <dt>04650</dt><dd><a href="/pathway/hsa04650">Natural killer cell mediated cytotoxicity</a></dd>
+    <dt>04612 <span class="small">N</span></dt><dd><a href="/pathway/hsa04612">Antigen processing and presentation</a></dd>
+    <dt>04660 <span class="small">N</span></dt><dd><a href="/pathway/hsa04660">T cell receptor signaling pathway</a></dd>
+    <dt>04658</dt><dd><a href="/pathway/hsa04658">Th1 and Th2 cell differentiation</a></dd>
+    <dt>04659</dt><dd><a href="/pathway/hsa04659">Th17 cell differentiation</a></dd>
+    <dt>04657</dt><dd><a href="/pathway/hsa04657">IL-17 signaling pathway</a></dd>
+    <dt>04662 <span class="small">N</span></dt><dd><a href="/pathway/hsa04662">B cell receptor signaling pathway</a></dd>
+    <dt>04664</dt><dd><a href="/pathway/hsa04664">Fc epsilon RI signaling pathway</a></dd>
+    <dt>04666 <span class="small">N</span></dt><dd><a href="/pathway/hsa04666">Fc gamma R-mediated phagocytosis</a></dd>
+    <dt>04670</dt><dd><a href="/pathway/hsa04670">Leukocyte transendothelial migration</a></dd>
+    <dt>04672</dt><dd><a href="/pathway/hsa04672">Intestinal immune network for IgA production</a></dd>
+    <dt>04062 <span class="small">N</span></dt><dd><a href="/pathway/hsa04062">Chemokine signaling pathway</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.2 Endocrine system</b>
+<div class="list">
+  <dl>
+    <dt>04911</dt><dd><a href="/pathway/hsa04911">Insulin secretion</a></dd>
+    <dt>04910</dt><dd><a href="/pathway/hsa04910">Insulin signaling pathway</a></dd>
+    <dt>04922</dt><dd><a href="/pathway/hsa04922">Glucagon signaling pathway</a></dd>
+    <dt>04923</dt><dd><a href="/pathway/hsa04923">Regulation of lipolysis in adipocytes</a></dd>
+    <dt>04920</dt><dd><a href="/pathway/hsa04920">Adipocytokine signaling pathway</a></dd>
+    <dt>03320</dt><dd><a href="/pathway/hsa03320">PPAR signaling pathway</a></dd>
+    <dt>04929 <span class="small">N</span></dt><dd><a href="/pathway/hsa04929">GnRH secretion</a></dd>
+    <dt>04912 <span class="small">N</span></dt><dd><a href="/pathway/hsa04912">GnRH signaling pathway</a></dd>
+    <dt>04913</dt><dd><a href="/pathway/hsa04913">Ovarian steroidogenesis</a></dd>
+    <dt>04915 <span class="small">N</span></dt><dd><a href="/pathway/hsa04915">Estrogen signaling pathway</a></dd>
+    <dt>04914</dt><dd><a href="/pathway/xla04914">Progesterone-mediated oocyte maturation</a></dd>
+    <dt>04917 <span class="small">N</span></dt><dd><a href="/pathway/hsa04917">Prolactin signaling pathway</a></dd>
+    <dt>04921</dt><dd><a href="/pathway/hsa04921">Oxytocin signaling pathway</a></dd>
+    <dt>04926</dt><dd><a href="/pathway/hsa04926">Relaxin signaling pathway</a></dd>
+    <dt>04935 <span class="small">N</span></dt><dd><a href="/pathway/hsa04935">Growth hormone synthesis, secretion and action</a></dd>
+    <dt>04918 <span class="small">N</span></dt><dd><a href="/pathway/hsa04918">Thyroid hormone synthesis</a></dd>
+    <dt>04919 <span class="small">N</span></dt><dd><a href="/pathway/hsa04919">Thyroid hormone signaling pathway</a></dd>
+    <dt>04928 <span class="small">N</span></dt><dd><a href="/pathway/hsa04928">Parathyroid hormone synthesis, secretion and action</a></dd>
+    <dt>04916</dt><dd><a href="/pathway/hsa04916">Melanogenesis</a></dd>
+    <dt>04924 <span class="small">N</span></dt><dd><a href="/pathway/hsa04924">Renin secretion</a></dd>
+    <dt>04614 <span class="small">N</span></dt><dd><a href="/pathway/hsa04614">Renin-angiotensin system</a></dd>
+    <dt>04925 <span class="small">N</span></dt><dd><a href="/pathway/hsa04925">Aldosterone synthesis and secretion</a></dd>
+    <dt>04927 <span class="small">N</span></dt><dd><a href="/pathway/hsa04927">Cortisol synthesis and secretion</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.3 Circulatory system</b>
+<div class="list">
+  <dl>
+    <dt>04260</dt><dd><a href="/pathway/hsa04260">Cardiac muscle contraction</a></dd>
+    <dt>04261 <span class="small">N</span></dt><dd><a href="/pathway/hsa04261">Adrenergic signaling in cardiomyocytes</a></dd>
+    <dt>04270</dt><dd><a href="/pathway/hsa04270">Vascular smooth muscle contraction</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.4 Digestive system</b>
+<div class="list">
+  <dl>
+    <dt>04970</dt><dd><a href="/pathway/hsa04970">Salivary secretion</a></dd>
+    <dt>04971</dt><dd><a href="/pathway/hsa04971">Gastric acid secretion</a></dd>
+    <dt>04972</dt><dd><a href="/pathway/hsa04972">Pancreatic secretion</a></dd>
+    <dt>04976</dt><dd><a href="/pathway/hsa04976">Bile secretion</a></dd>
+    <dt>04973</dt><dd><a href="/pathway/hsa04973">Carbohydrate digestion and absorption</a></dd>
+    <dt>04974</dt><dd><a href="/pathway/hsa04974">Protein digestion and absorption</a></dd>
+    <dt>04975</dt><dd><a href="/pathway/hsa04975">Fat digestion and absorption</a></dd>
+    <dt>04979 <span class="small">N</span></dt><dd><a href="/pathway/hsa04979">Cholesterol metabolism</a></dd>
+    <dt>04977</dt><dd><a href="/pathway/hsa04977">Vitamin digestion and absorption</a></dd>
+    <dt>04978</dt><dd><a href="/pathway/hsa04978">Mineral absorption</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.5 Excretory system</b>
+<div class="list">
+  <dl>
+    <dt>04962 <span class="small">N</span></dt><dd><a href="/pathway/hsa04962">Vasopressin-regulated water reabsorption</a></dd>
+    <dt>04960</dt><dd><a href="/pathway/hsa04960">Aldosterone-regulated sodium reabsorption</a></dd>
+    <dt>04961 <span class="small">N</span></dt><dd><a href="/pathway/hsa04961">Endocrine and other factor-regulated calcium reabsorption</a></dd>
+    <dt>04964</dt><dd><a href="/pathway/hsa04964">Proximal tubule bicarbonate reclamation</a></dd>
+    <dt>04966</dt><dd><a href="/pathway/hsa04966">Collecting duct acid secretion</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.6 Nervous system</b>
+<div class="list">
+  <dl>
+    <dt>04724 <span class="small">N</span></dt><dd><a href="/pathway/hsa04724">Glutamatergic synapse</a></dd>
+    <dt>04727</dt><dd><a href="/pathway/hsa04727">GABAergic synapse</a></dd>
+    <dt>04725</dt><dd><a href="/pathway/hsa04725">Cholinergic synapse</a></dd>
+    <dt>04728 <span class="small">N</span></dt><dd><a href="/pathway/hsa04728">Dopaminergic synapse</a></dd>
+    <dt>04726</dt><dd><a href="/pathway/hsa04726">Serotonergic synapse</a></dd>
+    <dt>04720 <span class="small">N</span></dt><dd><a href="/pathway/hsa04720">Long-term potentiation</a></dd>
+    <dt>04730 <span class="small">N</span></dt><dd><a href="/pathway/hsa04730">Long-term depression</a></dd>
+    <dt>04723</dt><dd><a href="/pathway/hsa04723">Retrograde endocannabinoid signaling</a></dd>
+    <dt>04721</dt><dd><a href="/pathway/hsa04721">Synaptic vesicle cycle</a></dd>
+    <dt>04722</dt><dd><a href="/pathway/hsa04722">Neurotrophin signaling pathway</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.7 Sensory system</b>
+<div class="list">
+  <dl>
+    <dt>04744</dt><dd><a href="/pathway/hsa04744">Phototransduction</a></dd>
+    <dt>04745</dt><dd><a href="/pathway/dme04745">Phototransduction - fly</a></dd>
+    <dt>04740</dt><dd><a href="/pathway/hsa04740">Olfactory transduction</a></dd>
+    <dt>04742</dt><dd><a href="/pathway/hsa04742">Taste transduction</a></dd>
+    <dt>04750</dt><dd><a href="/pathway/hsa04750">Inflammatory mediator regulation of TRP channels</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.8 Development and regeneration</b>
+<div class="list">
+  <dl>
+    <dt>04320</dt><dd><a href="/pathway/dme04320">Dorso-ventral axis formation</a></dd>
+    <dt>04360</dt><dd><a href="/pathway/hsa04360">Axon guidance</a></dd>
+    <dt>04361</dt><dd><a href="/pathway/cel04361">Axon regeneration</a></dd>
+    <dt>04380</dt><dd><a href="/pathway/hsa04380">Osteoclast differentiation</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.9 Aging</b>
+<div class="list">
+  <dl>
+    <dt>04211</dt><dd><a href="/pathway/hsa04211">Longevity regulating pathway</a></dd>
+    <dt>04212</dt><dd><a href="/pathway/cel04212">Longevity regulating pathway - worm</a></dd>
+    <dt>04213</dt><dd><a href="/pathway/hsa04213">Longevity regulating pathway - multiple species</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>5.10 Environmental adaptation</b>
+<div class="list">
+  <dl>
+    <dt>04710</dt><dd><a href="/pathway/hsa04710">Circadian rhythm</a></dd>
+    <dt>04713</dt><dd><a href="/pathway/hsa04713">Circadian entrainment</a></dd>
+    <dt>04711</dt><dd><a href="/pathway/dme04711">Circadian rhythm - fly</a></dd>
+    <dt>04712</dt><dd><a href="/pathway/ath04712">Circadian rhythm - plant</a></dd>
+    <dt>04714 <span class="small">N</span></dt><dd><a href="/pathway/hsa04714">Thermogenesis</a></dd>
+    <dt>04626</dt><dd><a href="/pathway/ath04626">Plant-pathogen interaction</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<h4 id="disease">6. Human Diseases</h4>
+
+<b>6.1 Cancer: overview</b>
+<div class="list">
+  <dl>
+    <dt>05200 <span class="small">N</span></dt><dd><a href="/pathway/hsa05200">Pathways in cancer</a></dd>
+    <dt>05202</dt><dd><a href="/pathway/hsa05202">Transcriptional misregulation in cancer</a></dd>
+    <dt>05206</dt><dd><a href="/pathway/hsa05206">MicroRNAs in cancer</a></dd>
+    <dt>05205</dt><dd><a href="/pathway/hsa05205">Proteoglycans in cancer</a></dd>
+    <dt>05204 <span class="small">N</span></dt><dd><a href="/pathway/hsa05204">Chemical carcinogenesis - DNA adducts</a></dd>
+    <dt>05207 <span class="small">N</span></dt><dd><a href="/pathway/hsa05207">Chemical carcinogenesis - receptor activation</a></dd>
+    <dt>05208 <span class="small">N</span></dt><dd><a href="/pathway/hsa05208">Chemical carcinogenesis - reactive oxygen species</a></dd>
+    <dt>05203</dt><dd><a href="/kegg-bin/show_pathway?map=05203&amp;orgs=hsa+pathogen">Viral carcinogenesis</a></dd>
+    <dt>05230</dt><dd><a href="/pathway/hsa05230">Central carbon metabolism in cancer</a></dd>
+    <dt>05231</dt><dd><a href="/pathway/hsa05231">Choline metabolism in cancer</a></dd>
+    <dt>05235</dt><dd><a href="/pathway/hsa05235">PD-L1 expression and PD-1 checkpoint pathway in cancer</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.2 Cancer: specific types</b>
+<div class="list">
+  <dl>
+    <dt>05210 <span class="small">N</span></dt><dd><a href="/pathway/hsa05210">Colorectal cancer</a></dd>
+    <dt>05212 <span class="small">N</span></dt><dd><a href="/pathway/hsa05212">Pancreatic cancer</a></dd>
+    <dt>05225 <span class="small">N</span></dt><dd><a href="/pathway/hsa05225">Hepatocellular carcinoma</a></dd>
+    <dt>05226 <span class="small">N</span></dt><dd><a href="/pathway/hsa05226">Gastric cancer</a></dd>
+    <dt>05214 <span class="small">N</span></dt><dd><a href="/pathway/hsa05214">Glioma</a></dd>
+    <dt>05216 <span class="small">N</span></dt><dd><a href="/pathway/hsa05216">Thyroid cancer</a></dd>
+    <dt>05221 <span class="small">N</span></dt><dd><a href="/pathway/hsa05221">Acute myeloid leukemia</a></dd>
+    <dt>05220 <span class="small">N</span></dt><dd><a href="/pathway/hsa05220">Chronic myeloid leukemia</a></dd>
+    <dt>05217 <span class="small">N</span></dt><dd><a href="/pathway/hsa05217">Basal cell carcinoma</a></dd>
+    <dt>05218 <span class="small">N</span></dt><dd><a href="/pathway/hsa05218">Melanoma</a></dd>
+    <dt>05211 <span class="small">N</span></dt><dd><a href="/pathway/hsa05211">Renal cell carcinoma</a></dd>
+    <dt>05219 <span class="small">N</span></dt><dd><a href="/pathway/hsa05219">Bladder cancer</a></dd>
+    <dt>05215 <span class="small">N</span></dt><dd><a href="/pathway/hsa05215">Prostate cancer</a></dd>
+    <dt>05213 <span class="small">N</span></dt><dd><a href="/pathway/hsa05213">Endometrial cancer</a></dd>
+    <dt>05224 <span class="small">N</span></dt><dd><a href="/pathway/hsa05224">Breast cancer</a></dd>
+    <dt>05222 <span class="small">N</span></dt><dd><a href="/pathway/hsa05222">Small cell lung cancer</a></dd>
+    <dt>05223 <span class="small">N</span></dt><dd><a href="/pathway/hsa05223">Non-small cell lung cancer</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.3 Infectious disease: viral</b>
+<div class="list">
+  <dl>
+    <dt>05166 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05166&amp;orgs=hsa+pathogen">Human T-cell leukemia virus 1 infection</a></dd>
+    <dt>05170 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05170&amp;orgs=hsa+pathogen">Human immunodeficiency virus 1 infection</a></dd>
+    <dt>05161 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05161&amp;orgs=hsa+pathogen">Hepatitis B</a></dd>
+    <dt>05160 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05160&amp;orgs=hsa+pathogen">Hepatitis C</a></dd>
+    <dt>05171 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05171&amp;orgs=hsa+pathogen">Coronavirus disease - COVID-19</a></dd>
+    <dt>05164 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05164&amp;orgs=hsa+pathogen">Influenza A</a></dd>
+    <dt>05162 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05162&amp;orgs=hsa+pathogen">Measles</a></dd>
+    <dt>05168 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05168&amp;orgs=hsa+pathogen">Herpes simplex virus 1 infection</a></dd>
+    <dt>05163 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05163&amp;orgs=hsa+pathogen">Human cytomegalovirus infection</a></dd>
+    <dt>05167 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05167&amp;orgs=hsa+pathogen">Kaposi sarcoma-associated herpesvirus infection</a></dd>
+    <dt>05169 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05169&amp;orgs=hsa+pathogen">Epstein-Barr virus infection</a></dd>
+    <dt>05165 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05165&amp;orgs=hsa+pathogen">Human papillomavirus infection</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.4 Infectious disease: bacterial</b>
+<div class="list">
+  <dl>
+    <dt>05110</dt><dd><a href="/kegg-bin/show_pathway?map=05110&amp;orgs=hsa+pathogen">Vibrio cholerae infection</a></dd>
+    <dt>05120</dt><dd><a href="/kegg-bin/show_pathway?map=05120&amp;orgs=hsa+pathogen">Epithelial cell signaling in Helicobacter pylori infection</a></dd>
+    <dt>05130 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05130&amp;orgs=hsa+pathogen">Pathogenic Escherichia coli infection</a></dd>
+    <dt>05132 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05132&amp;orgs=hsa+pathogen">Salmonella infection</a></dd>
+    <dt>05131 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05131&amp;orgs=hsa+pathogen">Shigellosis</a></dd>
+    <dt>05135 <span class="small">N</span></dt><dd><a href="/kegg-bin/show_pathway?map=05135&amp;orgs=hsa+pathogen">Yersinia infection</a></dd>
+    <dt>05133</dt><dd><a href="/kegg-bin/show_pathway?map=05133&amp;orgs=hsa+pathogen">Pertussis</a></dd>
+    <dt>05134</dt><dd><a href="/kegg-bin/show_pathway?map=05134&amp;orgs=hsa+pathogen">Legionellosis</a></dd>
+    <dt>05150</dt><dd><a href="/kegg-bin/show_pathway?map=05150&amp;orgs=hsa+pathogen">Staphylococcus aureus infection</a></dd>
+    <dt>05152</dt><dd><a href="/kegg-bin/show_pathway?map=05152&amp;orgs=hsa+pathogen">Tuberculosis</a></dd>
+    <dt>05100</dt><dd><a href="/kegg-bin/show_pathway?map=05100&amp;orgs=hsa+pathogen">Bacterial invasion of epithelial cells</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.5 Infectious disease: parasitic</b>
+<div class="list">
+  <dl>
+    <dt>05146</dt><dd><a href="/kegg-bin/show_pathway?map=05146&amp;orgs=hsa+pathogen">Amoebiasis</a></dd>
+    <dt>05144</dt><dd><a href="/kegg-bin/show_pathway?map=05144&amp;orgs=hsa+pathogen">Malaria</a></dd>
+    <dt>05145</dt><dd><a href="/kegg-bin/show_pathway?map=05145&amp;orgs=hsa+pathogen">Toxoplasmosis</a></dd>
+    <dt>05140</dt><dd><a href="/kegg-bin/show_pathway?map=05140&amp;orgs=hsa+pathogen">Leishmaniasis</a></dd>
+    <dt>05142</dt><dd><a href="/kegg-bin/show_pathway?map=05142&amp;orgs=hsa+pathogen">Chagas disease</a></dd>
+    <dt>05143</dt><dd><a href="/kegg-bin/show_pathway?map=05143&amp;orgs=hsa+pathogen">African trypanosomiasis</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.6 Immune disease</b>
+<div class="list">
+  <dl>
+    <dt>05310</dt><dd><a href="/pathway/hsa05310">Asthma</a></dd>
+    <dt>05322</dt><dd><a href="/pathway/hsa05322">Systemic lupus erythematosus</a></dd>
+    <dt>05323</dt><dd><a href="/pathway/hsa05323">Rheumatoid arthritis</a></dd>
+    <dt>05320</dt><dd><a href="/pathway/hsa05320">Autoimmune thyroid disease</a></dd>
+    <dt>05321</dt><dd><a href="/pathway/hsa05321">Inflammatory bowel disease</a></dd>
+    <dt>05330</dt><dd><a href="/pathway/hsa05330">Allograft rejection</a></dd>
+    <dt>05332</dt><dd><a href="/pathway/hsa05332">Graft-versus-host disease</a></dd>
+    <dt>05340</dt><dd><a href="/pathway/hsa05340">Primary immunodeficiency</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.7 Neurodegenerative disease</b>
+<div class="list">
+  <dl>
+    <dt>05010 <span class="small">N</span></dt><dd><a href="/pathway/hsa05010">Alzheimer disease</a></dd>
+    <dt>05012 <span class="small">N</span></dt><dd><a href="/pathway/hsa05012">Parkinson disease</a></dd>
+    <dt>05014 <span class="small">N</span></dt><dd><a href="/pathway/hsa05014">Amyotrophic lateral sclerosis</a></dd>
+    <dt>05016 <span class="small">N</span></dt><dd><a href="/pathway/hsa05016">Huntington disease</a></dd>
+    <dt>05017 <span class="small">N</span></dt><dd><a href="/pathway/hsa05017">Spinocerebellar ataxia</a></dd>
+    <dt>05020 <span class="small">N</span></dt><dd><a href="/pathway/hsa05020">Prion disease</a></dd>
+    <dt>05022 <span class="small">N</span></dt><dd><a href="/pathway/hsa05022">Pathways of neurodegeneration - multiple diseases</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.8 Substance dependence</b>
+<div class="list">
+  <dl>
+    <dt>05030</dt><dd><a href="/pathway/hsa05030">Cocaine addiction</a></dd>
+    <dt>05031</dt><dd><a href="/pathway/hsa05031">Amphetamine addiction</a></dd>
+    <dt>05032</dt><dd><a href="/pathway/hsa05032">Morphine addiction</a></dd>
+    <dt>05033</dt><dd><a href="/pathway/hsa05033">Nicotine addiction</a></dd>
+    <dt>05034</dt><dd><a href="/pathway/hsa05034">Alcoholism</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.9 Cardiovascular disease</b>
+<div class="list">
+  <dl>
+    <dt>05417</dt><dd><a href="/pathway/hsa05417">Lipid and atherosclerosis</a></dd>
+    <dt>05418</dt><dd><a href="/pathway/hsa05418">Fluid shear stress and atherosclerosis</a></dd>
+    <dt>05410</dt><dd><a href="/pathway/hsa05410">Hypertrophic cardiomyopathy</a></dd>
+    <dt>05412</dt><dd><a href="/pathway/hsa05412">Arrhythmogenic right ventricular cardiomyopathy</a></dd>
+    <dt>05414</dt><dd><a href="/pathway/hsa05414">Dilated cardiomyopathy</a></dd>
+    <dt>05415</dt><dd><a href="/pathway/hsa05415">Diabetic cardiomyopathy</a></dd>
+    <dt>05416</dt><dd><a href="/pathway/hsa05416">Viral myocarditis</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.10 Endocrine and metabolic disease</b>
+<div class="list">
+  <dl>
+    <dt>04930</dt><dd><a href="/pathway/hsa04930">Type II diabetes mellitus</a></dd>
+    <dt>04940</dt><dd><a href="/pathway/hsa04940">Type I diabetes mellitus</a></dd>
+    <dt>04950</dt><dd><a href="/pathway/hsa04950">Maturity onset diabetes of the young</a></dd>
+    <dt>04936</dt><dd><a href="/pathway/hsa04936">Alcoholic liver disease</a></dd>
+    <dt>04932</dt><dd><a href="/pathway/hsa04932">Non-alcoholic fatty liver disease</a></dd>
+    <dt>04931</dt><dd><a href="/pathway/hsa04931">Insulin resistance</a></dd>
+    <dt>04933</dt><dd><a href="/pathway/hsa04933">AGE-RAGE signaling pathway in diabetic complications</a></dd>
+    <dt>04934 <span class="small">N</span></dt><dd><a href="/pathway/hsa04934">Cushing syndrome</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.11 Drug resistance: antimicrobial</b>
+<div class="list">
+  <dl>
+    <dt>01501</dt><dd><a href="/pathway/map01501">beta-Lactam resistance</a></dd>
+    <dt>01502</dt><dd><a href="/pathway/map01502">Vancomycin resistance</a></dd>
+    <dt>01503</dt><dd><a href="/pathway/map01503">Cationic antimicrobial peptide (CAMP) resistance</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>6.12 Drug resistance: antineoplastic</b>
+<div class="list">
+  <dl>
+    <dt>01521</dt><dd><a href="/pathway/hsa01521">EGFR tyrosine kinase inhibitor resistance</a></dd>
+    <dt>01524</dt><dd><a href="/pathway/hsa01524">Platinum drug resistance</a></dd>
+    <dt>01523</dt><dd><a href="/pathway/hsa01523">Antifolate resistance</a></dd>
+    <dt>01522</dt><dd><a href="/pathway/hsa01522">Endocrine resistance</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<h4 id="drug">7. Drug Development</h4>
+
+<b>7.1 Chronology: Antiinfectives</b>
+<div class="list">
+  <dl>
+    <dt>07011</dt><dd><a href="/pathway/map07011">Penicillins</a></dd>
+    <dt>07012</dt><dd><a href="/pathway/map07012">Cephalosporins - parenteral agents</a></dd>
+    <dt>07013</dt><dd><a href="/pathway/map07013">Cephalosporins - oral agents</a></dd>
+    <dt>07021</dt><dd><a href="/pathway/map07021">Aminoglycosides</a></dd>
+    <dt>07019</dt><dd><a href="/pathway/map07019">Tetracyclines</a></dd>
+    <dt>07020</dt><dd><a href="/pathway/map07020">Macrolides and ketolides</a></dd>
+    <dt>07014</dt><dd><a href="/pathway/map07014">Quinolones</a></dd>
+    <dt>07023</dt><dd><a href="/pathway/map07023">Rifamycins</a></dd>
+    <dt>07026</dt><dd><a href="/pathway/map07026">Antifungal agents</a></dd>
+    <dt>07044</dt><dd><a href="/pathway/map07044">Antiviral agents</a></dd>
+    <dt>07053</dt><dd><a href="/pathway/map07053">Anti-HIV agents</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.2 Chronology: Antineoplastics</b>
+<div class="list">
+  <dl>
+    <dt>07040</dt><dd><a href="/pathway/map07040">Antineoplastics - alkylating agents</a></dd>
+    <dt>07041</dt><dd><a href="/pathway/map07041">Antineoplastics - antimetabolic agents</a></dd>
+    <dt>07042</dt><dd><a href="/pathway/map07042">Antineoplastics - agents from natural products</a></dd>
+    <dt>07043</dt><dd><a href="/pathway/map07043">Antineoplastics - hormones</a></dd>
+    <dt>07045</dt><dd><a href="/pathway/map07045">Antineoplastics - protein kinase inhibitors</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.3 Chronology: Nervous system agents</b>
+<div class="list">
+  <dl>
+    <dt>07032</dt><dd><a href="/pathway/map07032">Hypnotics</a></dd>
+    <dt>07030</dt><dd><a href="/pathway/map07030">Anxiolytics</a></dd>
+    <dt>07033</dt><dd><a href="/pathway/map07033">Anticonvulsants</a></dd>
+    <dt>07015</dt><dd><a href="/pathway/map07015">Local analgesics</a></dd>
+    <dt>07039</dt><dd><a href="/pathway/map07039">Opioid analgesics</a></dd>
+    <dt>07028</dt><dd><a href="/pathway/map07028">Antipsychotics</a></dd>
+    <dt>07029</dt><dd><a href="/pathway/map07029">Antipsychotics - phenothiazines</a></dd>
+    <dt>07031</dt><dd><a href="/pathway/map07031">Antipsychotics - butyrophenones</a></dd>
+    <dt>07027</dt><dd><a href="/pathway/map07027">Antidepressants</a></dd>
+    <dt>07056</dt><dd><a href="/pathway/map07056">Agents for Alzheimer-type dementia</a></dd>
+    <dt>07057</dt><dd><a href="/pathway/map07057">Antiparkinsonian agents</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.4 Chronology: Other drugs</b>
+<div class="list">
+  <dl>
+    <dt>07055</dt><dd><a href="/pathway/map07055">Sulfonamide derivatives - overview</a></dd>
+    <dt>07016</dt><dd><a href="/pathway/map07016">Sulfonamide derivatives - sulfa drugs</a></dd>
+    <dt>07017</dt><dd><a href="/pathway/map07017">Sulfonamide derivatives - diuretics</a></dd>
+    <dt>07018</dt><dd><a href="/pathway/map07018">Sulfonamide derivatives - hypoglycemic agents</a></dd>
+    <dt>07037</dt><dd><a href="/pathway/map07037">Antiarrhythmic drugs</a></dd>
+    <dt>07038</dt><dd><a href="/pathway/map07038">Antiulcer drugs</a></dd>
+    <dt>07046</dt><dd><a href="/pathway/map07046">Immunosuppressive agents</a></dd>
+    <dt>07047</dt><dd><a href="/pathway/map07047">Osteoporosis drugs</a></dd>
+    <dt>07048</dt><dd><a href="/pathway/map07048">Antimigraines</a></dd>
+    <dt>07049</dt><dd><a href="/pathway/map07049">Antithrombosis agents</a></dd>
+    <dt>07050</dt><dd><a href="/pathway/map07050">Antirheumatics - DMARDs and biological agents</a></dd>
+    <dt>07051</dt><dd><a href="/pathway/map07051">Antidiabetics</a></dd>
+    <dt>07052</dt><dd><a href="/pathway/map07052">Antidyslipidemic agents</a></dd>
+    <dt>07054</dt><dd><a href="/pathway/map07054">Antiglaucoma agents</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.5 Target-based classification: G protein-coupled receptors</b>
+<div class="list">
+  <dl>
+    <dt>07220</dt><dd><a href="/pathway/map07220">Cholinergic and anticholinergic drugs</a></dd>
+    <dt>07215</dt><dd><a href="/pathway/map07215">alpha-Adrenergic receptor agonists/antagonists</a></dd>
+    <dt>07214</dt><dd><a href="/pathway/map07214">beta-Adrenergic receptor agonists/antagonists</a></dd>
+    <dt>07213</dt><dd><a href="/pathway/map07213">Dopamine receptor agonists/antagonists</a></dd>
+    <dt>07212</dt><dd><a href="/pathway/map07212">Histamine H1 receptor antagonists</a></dd>
+    <dt>07227</dt><dd><a href="/pathway/map07227">Histamine H2/H3 receptor agonists/antagonists</a></dd>
+    <dt>07211</dt><dd><a href="/pathway/map07211">Serotonin receptor agonists/antagonists</a></dd>
+    <dt>07228</dt><dd><a href="/pathway/map07228">Eicosanoid receptor agonists/antagonists</a></dd>
+    <dt>07224</dt><dd><a href="/pathway/map07224">Opioid receptor agonists/antagonists</a></dd>
+    <dt>07229</dt><dd><a href="/pathway/map07229">Angiotensin receptor and endothelin receptor antagonists</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.6 Target-based classification: Nuclear receptors</b>
+<div class="list">
+  <dl>
+    <dt>07225</dt><dd><a href="/pathway/map07225">Glucocorticoid and mineralocorticoid receptor agonists/antagonists</a></dd>
+    <dt>07226</dt><dd><a href="/pathway/map07226">Progesterone, androgen and estrogen receptor agonists/antagonists</a></dd>
+    <dt>07223</dt><dd><a href="/pathway/map07223">Retinoic acid receptor (RAR) and retinoid X receptor (RXR) agonists/antagonists</a></dd>
+    <dt>07222</dt><dd><a href="/pathway/map07222">Peroxisome proliferator-activated receptor (PPAR) agonists</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.7 Target-based classification: Ion channels</b>
+<div class="list">
+  <dl>
+    <dt>07221</dt><dd><a href="/pathway/map07221">Nicotinic cholinergic receptor antagonists</a></dd>
+    <dt>07230</dt><dd><a href="/pathway/map07230">GABA-A receptor agonists/antagonists</a></dd>
+    <dt>07036</dt><dd><a href="/pathway/map07036">Calcium channel blocking drugs</a></dd>
+    <dt>07231</dt><dd><a href="/pathway/map07231">Sodium channel blocking drugs</a></dd>
+    <dt>07232</dt><dd><a href="/pathway/map07232">Potassium channel blocking and opening drugs</a></dd>
+    <dt>07235</dt><dd><a href="/pathway/map07235">N-Methyl-D-aspartic acid (NMDA) receptor antagonists</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.8 Target-based classification: Transporters</b>
+<div class="list">
+  <dl>
+    <dt>07233</dt><dd><a href="/pathway/map07233">Ion transporter inhibitors</a></dd>
+    <dt>07234</dt><dd><a href="/pathway/map07234">Neurotransmitter transporter inhibitors</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.9 Target-based classification: Enzymes</b>
+<div class="list">
+  <dl>
+    <dt>07216</dt><dd><a href="/pathway/map07216">Catecholamine transferase inhibitors</a></dd>
+    <dt>07219</dt><dd><a href="/pathway/map07219">Cyclooxygenase inhibitors</a></dd>
+    <dt>07024</dt><dd><a href="/pathway/map07024">HMG-CoA reductase inhibitors</a></dd>
+    <dt>07217</dt><dd><a href="/pathway/map07217">Renin-angiotensin system inhibitors</a></dd>
+    <dt>07218</dt><dd><a href="/pathway/map07218">HIV protease inhibitors</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.10 Structure-based classification</b>
+<div class="list">
+  <dl>
+    <dt>07025</dt><dd><a href="/pathway/map07025">Quinolines</a></dd>
+    <dt>07034</dt><dd><a href="/pathway/map07034">Eicosanoids</a></dd>
+    <dt>07035</dt><dd><a href="/pathway/map07035">Prostaglandins</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<b>7.11 Skeleton-based classification</b>
+<div class="list">
+  <dl>
+    <dt>07110</dt><dd><a href="/pathway/map07110">Benzoic acid family</a></dd>
+    <dt>07112</dt><dd><a href="/pathway/map07112">1,2-Diphenyl substitution family</a></dd>
+    <dt>07114</dt><dd><a href="/pathway/map07114">Naphthalene family</a></dd>
+    <dt>07117</dt><dd><a href="/pathway/map07117">Benzodiazepine family</a></dd>
+  </dl>
+</div>
+<div class="clear"></div>
+
+<hr class="frame3">
+
+<i>Last updated: October 10, 2023</i>
+
+</div>
+
+<!-- end -->
+
+</div>
+
+</body>
+
+</html>
